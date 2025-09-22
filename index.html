@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Craft Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <!-- 1. Welcome & Language Selection -->
+    <section id="welcome-screen" class="screen active">
+        <div class="glass-panel">
+            <h1 class="animated-gradient">Welcome to the Artisan Craft Marketplace</h1>
+            <p>Please select your language:</p>
+            <div id="language-selection">
+                <button class="lang-btn" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="es">Hindi</button>
+                <button class="lang-btn" data-lang="fr">Français</button>
+                <button class="lang-btn" data-lang="de">Deutsch</button>
+            </div>
+            <button class="next-btn">Continue</button>
+        </div>
+    </section>
+
+    <!-- 2. Craft Category Selection -->
+    <section id="category-selection" class="screen hidden">
+        <div class="glass-panel">
+            <h2>Choose Your Craft Category</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="pottery">
+                    <div class="icon">🏺</div>
+                    <p>Pottery</p>
+                </div>
+                <div class="category-card" data-category="textiles">
+                    <div class="icon">🧶</div>
+                    <p>Textiles</p>
+                </div>
+                <div class="category-card" data-category="woodworking">
+                    <div class="icon">🔨</div>
+                    <p>Woodworking</p>
+                </div>
+                <div class="category-card" data-category="jewelry">
+                    <div class="icon">💍</div>
+                    <p>Jewelry</p>
+                </div>
+                <div class="category-card" data-category="glasswork">
+                    <div class="icon">💠</div>
+                    <p>Glasswork</p>
+                </div>
+                <div class="category-card" data-category="other">
+                    <div class="icon">✨</div>
+                    <p>Other</p>
+                </div>
+            </div>
+            <button class="prev-btn">Back</button>
+            <button class="next-btn">Next</button>
+        </div>
+    </section>
+
+    <!-- 3. Artisan Profile Setup -->
+    <section id="profile-setup" class="screen hidden">
+        <div class="glass-panel">
+            <h2>Set Up Your Artisan Profile</h2>
+            <form id="profile-form">
+                <div class="form-group">
+                    <label for="artisan-name">Artisan Name</label>
+                    <input type="text" id="artisan-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="artisan-bio">Bio</label>
+                    <textarea id="artisan-bio" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location (Country/City)</label>
+                    <input type="text" id="location" required>
+                </div>
+                <div class="form-group">
+                    <label>Shipping Preferences</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="shipping-domestic" value="domestic">
+                        <label for="shipping-domestic">Domestic</label>
+                        <input type="checkbox" id="shipping-international" value="international">
+                        <label for="shipping-international">International</label>
+                    </div>
+                </div>
+                <button class="prev-btn">Back</button>
+                <button type="submit" class="next-btn">Save and Continue</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 4. Photo Upload -->
+    <section id="photo-upload" class="screen hidden">
+        <div class="glass-panel">
+            <h2>Upload Your Craft Photos</h2>
+            <div id="drop-zone">
+                <p>Drag & drop your photos here or click to select files</p>
+                <input type="file" id="file-input" multiple accept="image/*" class="hidden">
+            </div>
+            <div id="gallery"></div>
+            <div id="achievements">
+                <h3>Achievements</h3>
+                <div id="showcase-master" class="achievement">
+                    <span class="badge">🏆</span> Showcase Master (Upload 5 photos)
+                </div>
+            </div>
+            <div class="upload-tips">
+                <h4>Upload Tips:</h4>
+                <ul>
+                    <li>Use high-quality images.</li>
+                    <li>Show your craft from different angles.</li>
+                    <li>Good lighting makes a difference!</li>
+                </ul>
+            </div>
+            <button class="prev-btn">Back</button>
+            <button class="next-btn">Next</button>
+        </div>
+    </section>
+
+    <!-- 5. Craft Pedigree Builder -->
+    <section id="pedigree-builder" class="screen hidden">
+        <div class="glass-panel">
+            <h2>Craft Pedigree Builder (Voice-Guided)</h2>
+            <div id="voice-simulation">
+                <p class="voice-text">"Tell us about the heritage of your craft..."</p>
+                <button id="record-btn">🎤 Start Recording</button>
+            </div>
+            <form id="pedigree-form">
+                <div class="form-group">
+                    <label for="heritage">Heritage & Experience</label>
+                    <textarea id="heritage" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="materials">Materials & Process</label>
+                    <textarea id="materials" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="inspiration">Inspiration</label>
+                    <textarea id="inspiration" rows="2"></textarea>
+                </div>
+                <button class="prev-btn">Back</button>
+                <button class="next-btn">Next</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 6. Customer Communication Interface -->
+    <section id="communication-interface" class="screen hidden">
+        <div class="glass-panel">
+            <h2>Customer Communication</h2>
+            <div class="chat-preview">
+                <div class="message received">Hello! I love your work.</div>
+                <div class="message sent">Thank you so much!</div>
+            </div>
+            <div class="communication-options">
+                <h4>Preferences</h4>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="voice-chat" checked>
+                    <label for="voice-chat">Enable Voice Chat</label>
+                </div>
+                <div class="form-group">
+                    <label for="response-time">Typical Response Time</label>
+                    <select id="response-time">
+                        <option>Within a few hours</option>
+                        <option>Within 24 hours</option>
+                        <option>1-2 business days</option>
+                    </select>
+                </div>
+            </div>
+            <button class="prev-btn">Back</button>
+            <button id="finish-btn">Finish Setup</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
