@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         btn.addEventListener('click', () => {
             langBtns.forEach(b => b.classList.remove('selected'));
             btn.classList.add('selected');
+            localStorage.setItem('selectedLang', btn.dataset.lang);
         });
     });
 
@@ -163,6 +164,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     loadState();
+
+    // Load selected language
+    const savedLang = localStorage.getItem('selectedLang');
+    if (savedLang) {
+        const selectedLangBtn = document.querySelector(`.lang-btn[data-lang="${savedLang}"]`);
+        if (selectedLangBtn) {
+            langBtns.forEach(b => b.classList.remove('selected'));
+            selectedLangBtn.classList.add('selected');
+        }
+    }
 
     // --- SplitText animation on welcome title ---
     try {

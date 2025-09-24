@@ -77,17 +77,18 @@ body {
     margin: 10px;
     padding: 10px 20px;
     border: 1px solid #fff;
-    background: transparent;
-    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    color: #e0e0e0;
     cursor: pointer;
     transition: background 0.3s, color 0.3s;
-    border-radius: 5px;
+    border-radius: 25px; /* More rounded */
 }
 
 #language-selection .lang-btn:hover,
 #language-selection .lang-btn.selected {
-    background: #fff;
-    color: #333;
+    background: #4CAF50; /* A distinct highlight color */
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
 }
 
 .category-grid {
