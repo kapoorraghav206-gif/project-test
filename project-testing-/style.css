@@ -4,7 +4,8 @@ body {
     padding: 0;
     background: linear-gradient(45deg, #f3ec78, #af4261, #f3ec78, #af4261);
     background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    /* Remove shifting background animation */
+    animation: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +35,6 @@ body {
     height: 5px;
     background-color: rgba(255, 255, 255, 0.2);
     z-index: 1000;
-    /* Added z-index for proper layering */
 }
 
 #progress-bar {
@@ -65,15 +65,10 @@ body {
     display: none;
 }
 
-.animated-gradient {
-    background: linear-gradient(45deg, #f3ec78, #af4261);
-    /* Fixed webkit prefix issue */
-    -webkit-background-clip: text;
-    background-clip: text;
-    /* Added standard property */
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    /* Added fallback for non-webkit browsers */
+/* Ensure welcome title is plain black text with spaces preserved */
+#welcome-title {
+    color: #000;
+    white-space: pre-wrap;
 }
 
 #language-selection .lang-btn {
@@ -85,7 +80,6 @@ body {
     cursor: pointer;
     transition: background 0.3s, color 0.3s;
     border-radius: 5px;
-    /* Added border-radius for consistency */
 }
 
 #language-selection .lang-btn:hover,
@@ -204,6 +198,20 @@ body {
     text-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
 }
 
+.category-card p {
+    margin: 0;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.category-card:hover p {
+    transform: translateY(-2px);
+    font-size: 1.1em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
 form {
     text-align: left;
 }
@@ -217,14 +225,11 @@ form {
     margin-bottom: 5px;
     color: #eee;
     font-weight: bold;
-    /* Added for better visibility */
 }
 
 input[type="text"],
 input[type="email"],
-/* Added email input type */
 input[type="number"],
-/* Added number input type */
 textarea,
 select {
     width: 100%;
@@ -233,35 +238,25 @@ select {
     border: 1px solid #ccc;
     background: rgba(255, 255, 255, 0.8);
     box-sizing: border-box;
-    /* Added to prevent width overflow */
     font-family: inherit;
-    /* Added for consistent font */
 }
 
 .checkbox-group {
     display: flex;
-    /* Added for better checkbox layout */
     flex-wrap: wrap;
-    /* Allow wrapping on small screens */
     gap: 15px;
-    /* Better spacing */
 }
 
 .checkbox-group label {
     color: #eee;
     display: flex;
-    /* Added for better alignment */
     align-items: center;
-    /* Center align checkbox and text */
     cursor: pointer;
-    /* Added cursor pointer */
 }
 
 .checkbox-group input[type="checkbox"] {
     width: auto;
-    /* Override the 100% width */
     margin-right: 5px;
-    /* Space between checkbox and label */
 }
 
 #drop-zone {
@@ -272,15 +267,12 @@ select {
     cursor: pointer;
     color: #fff;
     text-align: center;
-    /* Added for better text alignment */
     transition: border-color 0.3s;
-    /* Added transition */
 }
 
 #drop-zone:hover,
 #drop-zone.dragover {
     border-color: #4caf50;
-    /* Added hover and dragover states */
 }
 
 #gallery {
@@ -300,7 +292,6 @@ select {
     object-fit: cover;
     border-radius: 5px;
     display: block;
-    /* Added for proper image display */
 }
 
 .remove-btn {
@@ -315,16 +306,11 @@ select {
     width: 20px;
     height: 20px;
     line-height: 18px;
-    /* Adjusted for better centering */
     text-align: center;
     font-size: 12px;
-    /* Added font size */
     display: flex;
-    /* Added for better centering */
     align-items: center;
-    /* Center vertically */
     justify-content: center;
-    /* Center horizontally */
 }
 
 #achievements {
@@ -334,7 +320,6 @@ select {
 
 .achievement {
     margin-bottom: 10px;
-    /* Added spacing between achievements */
 }
 
 .achievement.unlocked .badge {
@@ -346,7 +331,6 @@ select {
     filter: grayscale(100%);
     transition: filter 0.5s;
     display: inline-block;
-    /* Added for proper display */
 }
 
 .upload-tips {
@@ -357,7 +341,6 @@ select {
 
 .upload-tips ul {
     padding-left: 20px;
-    /* Added proper list indentation */
 }
 
 #voice-simulation {
@@ -368,7 +351,6 @@ select {
     font-style: italic;
     color: #ddd;
     margin-bottom: 15px;
-    /* Added spacing */
 }
 
 #record-btn {
@@ -379,12 +361,10 @@ select {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
-    /* Added transition */
 }
 
 #record-btn:hover {
     background: #a93226;
-    /* Added hover state */
 }
 
 #record-btn.recording {
@@ -393,7 +373,6 @@ select {
 
 #record-btn.recording:hover {
     background: #229954;
-    /* Added hover state for recording */
 }
 
 .chat-preview {
@@ -413,25 +392,21 @@ select {
     max-width: 70%;
     color: #fff;
     word-wrap: break-word;
-    /* Added for long message handling */
 }
 
 .message.sent {
     background: #2980b9;
     margin-left: auto;
     text-align: right;
-    /* Added for sent message alignment */
 }
 
 .message.received {
     background: #7f8c8d;
     text-align: left;
-    /* Added for received message alignment */
 }
 
 .button-group {
     text-align: center;
-    /* Added for button centering */
     margin-top: 20px;
 }
 
@@ -444,20 +419,16 @@ select {
     cursor: pointer;
     margin: 10px 5px;
     font-family: inherit;
-    /* Added for consistent font */
     transition: background 0.3s;
-    /* Added transition */
 }
 
 .prev-btn {
     background: #95a5a6;
     color: #fff;
-    /* Added text color */
 }
 
 .prev-btn:hover {
     background: #7f8c8d;
-    /* Added hover state */
 }
 
 .next-btn,
@@ -469,74 +440,91 @@ select {
 .next-btn:hover,
 #finish-btn:hover {
     background: #27ae60;
-    /* Added hover states */
 }
 
 .next-btn:disabled,
 #finish-btn:disabled,
 .prev-btn:disabled {
     background: #bdc3c7;
-    /* Added disabled state */
     cursor: not-allowed;
     opacity: 0.6;
+}
+
+/* Dramatic hover for the first screen Continue button */
+#continue-btn {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #2ecc71, #00c3ff);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+#continue-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, #ff007f, #7a00ff, #00e5ff, #00ff85, #ffea00, #ff007f);
+    transform: rotate(0deg);
+    transition: transform 0.6s ease;
+    z-index: -1;
+}
+
+#continue-btn:hover::before {
+    transform: rotate(180deg);
+}
+
+#continue-btn:hover {
+    color: #111;
+    background: #ffffff;
+    filter: hue-rotate(160deg) saturate(1.6);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px) scale(1.04);
+}
+
+#continue-btn:active {
+    transform: translateY(0);
 }
 
 /* Enhanced mobile responsiveness */
 @media (max-width: 600px) {
     .glass-panel {
         padding: 20px;
-
-        .category-card .icon {
-            font-size: 2.5rem;
-            /* Smaller icons on mobile */
-        }
-
-        .category-card p {
-            font-size: 0.9em;
-            /* Smaller text on mobile */
-        }
-
-        h1 {
-            font-size: 1.8rem;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        .category-grid {
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            /* Adjusted for mobile */
-            gap: 15px;
-        }
-
-        .category-card {
-            padding: 15px;
-            /* Reduced padding for mobile */
-        }
-
-        .category-card p {
-            margin: 0;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            color: #fff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .category-card:hover p {
-            transform: translateY(-2px);
-            font-size: 1.1em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-
-        #drop-zone {
-            padding: 30px 20px;
-            /* Reduced padding for mobile */
-        }
-
-        .gallery-item img {
-            width: 80px;
-            /* Smaller gallery items on mobile */
-            height: 80px;
-        }
     }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 15px;
+    }
+
+    .category-card {
+        padding: 15px;
+    }
+
+    .category-card .icon {
+        font-size: 2.5rem;
+    }
+
+    .category-card p {
+        font-size: 0.9em;
+    }
+
+    #drop-zone {
+        padding: 30px 20px;
+    }
+
+    .gallery-item img {
+        width: 80px;
+        height: 80px;
+    }
+}

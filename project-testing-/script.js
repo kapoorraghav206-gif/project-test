@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const screens = document.querySelectorAll('.screen');
     const nextBtns = document.querySelectorAll('.next-btn');
     const prevBtns = document.querySelectorAll('.prev-btn');
@@ -163,4 +163,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     loadState();
+
+    // --- SplitText animation on welcome title ---
+    try {
+        const module = await import('./SplitText.js');
+        const SplitText = module.default;
+
+        const handleAnimationComplete = () => {
+            console.log('All letters have animated!');
+        };
+
+        new SplitText({
+            target: '#welcome-title',
+            text: 'Welcome to the Artisan Craft Marketplace',
+            className: 'text-2xl font-semibold text-center',
+            delay: 100,
+            duration: 0.6,
+            ease: 'power3.out',
+            splitType: 'chars',
+            from: { opacity: 0, transform: 'translateY(40px)' },
+            to: { opacity: 1, transform: 'translateY(0)' },
+            threshold: 0.1,
+            rootMargin: '-100px',
+            textAlign: 'center',
+            onLetterAnimationComplete: handleAnimationComplete
+        });
+    } catch (e) {
+        console.warn('SplitText module not available', e);
+    }
 });

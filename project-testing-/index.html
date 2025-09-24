@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artisan Craft Marketplace</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="progress-container">
@@ -14,7 +14,7 @@
     <!-- 1. Welcome & Language Selection -->
     <section id="welcome-screen" class="screen active">
         <div class="glass-panel">
-            <h1 class="animated-gradient">Welcome to the Artisan Craft Marketplace</h1>
+            <h1 id="welcome-title">Welcome to the Artisan Craft Marketplace</h1>
             <p>Please select your language:</p>
             <div id="language-selection">
                 <button class="lang-btn" data-lang="en">English</button>
@@ -22,7 +22,7 @@
                 <button class="lang-btn" data-lang="fr">Français</button>
                 <button class="lang-btn" data-lang="de">Deutsch</button>
             </div>
-            <button class="next-btn">Continue</button>
+            <button id="continue-btn" class="next-btn">Continue</button>
         </div>
     </section>
 
@@ -176,6 +176,6 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
