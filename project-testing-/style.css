@@ -2,10 +2,14 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(45deg, #f3ec78, #af4261, #f3ec78, #af4261);
-    background-size: 400% 400%;
-    /* Remove shifting background animation */
-    animation: none;
+    /* New dark, subtle drifting radial background */
+    background-color: #0e141b;
+    background-image:
+        radial-gradient(1200px 800px at 0% 0%, #1b2735 0%, rgba(27, 39, 53, 0) 60%),
+        radial-gradient(1200px 800px at 100% 100%, #090a0f 0%, #0b0e14 60%);
+    background-repeat: no-repeat;
+    background-size: 200% 200%, 200% 200%;
+    animation: backgroundDrift 40s ease-in-out infinite alternate;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,17 +17,15 @@ body {
     color: #333;
 }
 
-@keyframes gradientBG {
+@keyframes backgroundDrift {
     0% {
-        background-position: 0% 50%;
+        background-position: 0% 0%, 100% 100%;
     }
-
     50% {
-        background-position: 100% 50%;
+        background-position: 100% 0%, 0% 100%;
     }
-
     100% {
-        background-position: 0% 50%;
+        background-position: 0% 100%, 100% 0%;
     }
 }
 
