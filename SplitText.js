@@ -5,7 +5,7 @@ export default class SplitText {
             text,
             className = '',
             delay = 0,
-            duration = 0.6,
+            duration = 0.3,
             ease = 'power3.out',
             splitType = 'chars',
             from = { opacity: 0, transform: 'translateY(40px)' },
