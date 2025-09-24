@@ -1,5 +1,5 @@
 body {
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     /* New dark, subtle drifting radial background */
@@ -67,9 +67,9 @@ body {
     display: none;
 }
 
-/* Ensure welcome title is plain black text with spaces preserved */
+/* Ensure welcome title is white with spaces preserved */
 #welcome-title {
-    color: #000;
+    color: #fff;
     white-space: pre-wrap;
 }
 
