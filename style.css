@@ -75,40 +75,7 @@ body {
 
 /* removed background-lines animation */
 
-/* Hero text styling */
-.hero-title {
-    position: relative;
-    z-index: 1;
-    margin: 10px 0 4px;
-    font-size: 2rem;
-}
-
-@media (min-width: 768px) {
-    .hero-title { font-size: 3rem; }
-}
-@media (min-width: 1024px) {
-    .hero-title { font-size: 4.5rem; }
-}
-
-.gradient-text {
-    background: linear-gradient(180deg, #e6e6e6, #a5b4fc 45%, #ffffff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: -0.02em;
-}
-
-.hero-subtitle {
-    position: relative;
-    z-index: 1;
-    color: #cbd5e1;
-    max-width: 680px;
-    margin: 0 auto 16px;
-    font-size: 0.95rem;
-}
-@media (min-width: 768px) {
-    .hero-subtitle { font-size: 1.125rem; }
-}
+/* removed hero heading & subtitle styles */
 
 .language-prompt {
     color: #ffffff;
