@@ -34,6 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (desc.value) existing.profile.bio = desc.value.trim();
         if (email.value) existing.profile.email = email.value.trim();
         localStorage.setItem('artisanSetup', JSON.stringify(existing));
+        // Show saved banner
+        const banner = document.getElementById('record-banner');
+        if (banner) {
+            banner.classList.remove('opacity-0', 'translate-y-2');
+            banner.classList.add('opacity-100', 'translate-y-0');
+            setTimeout(() => {
+                banner.classList.add('opacity-0', 'translate-y-2');
+                banner.classList.remove('opacity-100', 'translate-y-0');
+            }, 1800);
+        }
     };
 
     form.addEventListener('submit', (e) => {
@@ -45,7 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     [firstname, lastname, email, password, desc].forEach((el) => {
-        el?.addEventListener('input', saveProfile);
+        el?.addEventListener('input', () => {
+            // Switch to black text on white background when user starts typing
+            if (el && el.value && el.classList) {
+                el.classList.remove('bg-gray-800', 'text-white');
+                el.classList.add('bg-white', 'text-black');
+            }
+            saveProfile();
+        });
     });
 
     // Marquee data and rendering

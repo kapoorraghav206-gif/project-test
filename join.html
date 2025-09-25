@@ -28,8 +28,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-900 min-h-screen">
-    <div class="max-w-6xl mx-auto px-4 py-8">
-        <div class="flex flex-col lg:flex-row lg:space-x-8 space-y-6 lg:space-y-0">
+    <div class="max-w-6xl mx-auto px-4 py-8 min-h-screen flex flex-col items-center justify-center gap-8">
+        <div class="w-full flex flex-col items-center gap-8">
             <!-- Left: Login/Join Card -->
             <div class="max-w-md w-full mx-auto rounded-2xl p-4 md:p-8 shadow-input bg-black/80 border border-white/10">
                 <h2 class="font-bold text-xl text-neutral-200">Welcome</h2>
@@ -74,15 +74,8 @@
                 </form>
             </div>
 
-            <!-- Bottom Icon Navigation -->
-            <nav class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-black/70 border border-white/10 rounded-full px-3 py-2 flex items-center gap-2">
-                <a href="index.html" class="px-3 py-2 rounded-full text-neutral-200 hover:bg-white/10" title="Home">🏠</a>
-                <a href="join.html" class="px-3 py-2 rounded-full text-neutral-200 bg-white/10" title="Join">📝</a>
-                <a href="profile.html" class="px-3 py-2 rounded-full text-neutral-200 hover:bg-white/10" title="Profile">👤</a>
-            </nav>
-
             <!-- Right: Marquee Showcase -->
-            <div class="flex-1">
+            <div class="w-full max-w-5xl">
                 <div class="flex items-center justify-between mb-2">
                     <h3 class="text-neutral-200 font-semibold">Artists Showcase</h3>
                     <div class="flex gap-2">
@@ -97,7 +90,20 @@
                     <div id="row-2" class="marquee-row reverse"></div>
                 </div>
             </div>
+            <!-- Record Saved Banner -->
+            <div id="record-banner" class="opacity-0 translate-y-2 transition-all duration-500 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/90 text-black font-semibold">
+                    <span>Artist record saved</span>
+                    <span class="inline-block w-2 h-2 rounded-full bg-black animate-pulse"></span>
+                </div>
+            </div>
         </div>
+        <!-- Bottom Icon Navigation -->
+        <nav class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-black/70 border border-white/10 rounded-full px-3 py-2 flex items-center gap-2">
+            <a href="index.html" class="px-3 py-2 rounded-full text-neutral-200 hover:bg-white/10" title="Home">🏠</a>
+            <a href="join.html" class="px-3 py-2 rounded-full text-neutral-200 bg-white/10" title="Join">📝</a>
+            <a href="profile.html" class="px-3 py-2 rounded-full text-neutral-200 hover:bg-white/10" title="Profile">👤</a>
+        </nav>
     </div>
 </body>
 </html>
