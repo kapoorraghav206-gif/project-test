@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (currentScreen < totalScreens - 1) {
                 showScreen(currentScreen + 1);
             }
+            // If on last screen and moving forward, navigate to artists page
+            if (currentScreen === totalScreens - 1) {
+                window.location.href = 'artists.html';
+            }
         });
     });
 
@@ -46,6 +50,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             btn.classList.add('selected');
             localStorage.setItem('selectedLang', btn.dataset.lang);
         });
+    });
+
+    // Allow direct jump to artists page after selecting language
+    const continueBtn = document.getElementById('continue-btn');
+    continueBtn?.addEventListener('click', () => {
+        // If they selected a language, go to artists page immediately
+        const selected = localStorage.getItem('selectedLang');
+        if (selected) {
+            window.location.href = 'artists.html';
+        } else {
+            // otherwise move to next screen in the wizard
+            if (currentScreen < totalScreens - 1) {
+                showScreen(currentScreen + 1);
+            }
+        }
     });
 
     // --- Category Selection ---
