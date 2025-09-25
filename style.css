@@ -61,8 +61,6 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     text-align: center;
-    position: relative;
-    overflow: hidden;
 }
 
 .hidden {
@@ -75,29 +73,7 @@ body {
     white-space: pre-wrap;
 }
 
-/* Animated background lines overlay */
-.background-lines {
-    position: absolute;
-    inset: -20% -10% -20% -10%;
-    background:
-        repeating-linear-gradient(
-            115deg,
-            rgba(255,255,255,0.06) 0px,
-            rgba(255,255,255,0.06) 2px,
-            transparent 2px,
-            transparent 24px
-        );
-    transform: translateZ(0);
-    animation: linesDrift 22s linear infinite;
-    pointer-events: none;
-    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.45), rgba(0,0,0,0) 65%);
-}
-
-@keyframes linesDrift {
-    0% { transform: translate3d(0,0,0) rotate(0.001deg); }
-    50% { transform: translate3d(-6%, -4%, 0) rotate(0.001deg); }
-    100% { transform: translate3d(0,0,0) rotate(0.001deg); }
-}
+/* removed background-lines animation */
 
 /* Hero text styling */
 .hero-title {
