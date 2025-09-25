@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join • Artisan Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .shadow-input { box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08); }
+        /* Marquee styles */
+        .marquee-wrapper { position: relative; overflow: hidden; border-radius: 12px; }
+        .fade-left, .fade-right { position: absolute; top: 0; bottom: 0; width: 12%; pointer-events: none; z-index: 2; }
+        .fade-left { left: 0; background: linear-gradient(90deg, rgba(2,6,23,1), rgba(2,6,23,0)); }
+        .fade-right { right: 0; background: linear-gradient(270deg, rgba(2,6,23,1), rgba(2,6,23,0)); }
+        .marquee-row { display: flex; gap: 16px; padding: 12px 0; will-change: transform; animation: scroll-left 14s linear infinite; }
+        .marquee-row.reverse { animation: scroll-right 14s linear infinite; }
+        .marquee-row:hover { animation-play-state: paused; }
+        @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    </style>
+    <script defer src="state.js"></script>
+    <script defer src="voice.js"></script>
+    <script defer src="join.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row lg:space-x-8 space-y-6 lg:space-y-0">
+            <!-- Left: Login/Join Card -->
+            <div class="max-w-md w-full mx-auto rounded-2xl p-4 md:p-8 shadow-input bg-black/80 border border-white/10">
+                <h2 class="font-bold text-xl text-neutral-200">Welcome</h2>
+                <p class="text-neutral-300 text-sm max-w-sm mt-2">Language: <span id="lang-indicator" class="font-semibold">—</span></p>
+
+                <form id="join-form" class="my-8">
+                    <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+                        <div class="flex flex-col space-y-2 w-full">
+                            <label for="firstname" class="text-sm font-medium text-neutral-300">First name</label>
+                            <input id="firstname" placeholder="Tyler" type="text" class="flex h-10 w-full border-none bg-gray-800 text-white rounded-md px-3 py-2 text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 shadow-input">
+                        </div>
+                        <div class="flex flex-col space-y-2 w-full">
+                            <label for="lastname" class="text-sm font-medium text-neutral-300">Last name</label>
+                            <input id="lastname" placeholder="Durden" type="text" class="flex h-10 w-full border-none bg-gray-800 text-white rounded-md px-3 py-2 text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 shadow-input">
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-2 w-full mb-4">
+                        <label for="email" class="text-sm font-medium text-neutral-300">Email Address</label>
+                        <input id="email" placeholder="you@example.com" type="email" class="flex h-10 w-full border-none bg-gray-800 text-white rounded-md px-3 py-2 text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 shadow-input">
+                    </div>
+                    <div class="flex flex-col space-y-2 w-full mb-4">
+                        <label for="password" class="text-sm font-medium text-neutral-300">Password</label>
+                        <input id="password" placeholder="••••••••" type="password" class="flex h-10 w-full border-none bg-gray-800 text-white rounded-md px-3 py-2 text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 shadow-input">
+                    </div>
+                    <div class="flex flex-col space-y-2 w-full mb-6">
+                        <div class="flex items-center justify-between">
+                            <label for="artist-desc" class="text-sm font-medium text-neutral-300">Brief description of your work</label>
+                            <button id="mic-btn" type="button" class="text-xs px-2 py-1 rounded-md bg-white/10 border border-white/10 text-neutral-200">🎤 Voice</button>
+                        </div>
+                        <textarea id="artist-desc" placeholder="Describe your craft in 1–2 lines" class="min-h-[44px] flex w-full border-none bg-gray-800 text-white rounded-md px-3 py-2 text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 shadow-input"></textarea>
+                    </div>
+                    <button class="bg-gradient-to-br relative group/btn from-zinc-900 to-zinc-900 block bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]" type="submit">
+                        Save & Continue →
+                        <span class="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></span>
+                        <span class="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></span>
+                    </button>
+                    <div class="bg-gradient-to-r from-transparent via-neutral-700 to-transparent my-8 h-[1px] w-full"></div>
+                    <div class="flex items-center justify-between text-sm text-neutral-400">
+                        <a href="index.html" class="underline underline-offset-4">Back</a>
+                        <span>Profile auto-saves</span>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Bottom Icon Navigation -->
+            <nav class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-black/70 border border-white/10 rounded-full px-3 py-2 flex items-center gap-2">
+                <a href="index.html" class="px-3 py-2 rounded-full text-neutral-200 hover:bg-white/10" title="Home">🏠</a>
+                <a href="join.html" class="px-3 py-2 rounded-full text-neutral-200 bg-white/10" title="Join">📝</a>
+                <a href="profile.html" class="px-3 py-2 rounded-full text-neutral-200 hover:bg-white/10" title="Profile">👤</a>
+            </nav>
+
+            <!-- Right: Marquee Showcase -->
+            <div class="flex-1">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-neutral-200 font-semibold">Artists Showcase</h3>
+                    <div class="flex gap-2">
+                        <button id="pause" class="px-3 py-1 rounded-full text-xs bg-white/10 text-neutral-200 border border-white/10">Pause</button>
+                        <button id="play" class="px-3 py-1 rounded-full text-xs bg-white/10 text-neutral-200 border border-white/10">Play</button>
+                    </div>
+                </div>
+                <div class="marquee-wrapper border border-white/10 rounded-xl bg-white/5">
+                    <div class="fade-left"></div>
+                    <div class="fade-right"></div>
+                    <div id="row-1" class="marquee-row"></div>
+                    <div id="row-2" class="marquee-row reverse"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

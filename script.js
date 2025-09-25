@@ -52,13 +52,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    // Allow direct jump to artists page after selecting language
+    // Allow direct jump to join page after selecting language
     const continueBtn = document.getElementById('continue-btn');
     continueBtn?.addEventListener('click', () => {
         // If they selected a language, go to artists page immediately
         const selected = localStorage.getItem('selectedLang');
         if (selected) {
-            window.location.href = 'artists.html';
+            window.location.href = 'join.html';
         } else {
             // otherwise move to next screen in the wizard
             if (currentScreen < totalScreens - 1) {
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             text: 'Welcome to the Artisan Craft Marketplace',
             className: 'text-2xl font-semibold text-center',
             delay: 100,
-            duration: 0.6,
+            duration: 0.0006,
             ease: 'power3.out',
             splitType: 'chars',
             from: { opacity: 0, transform: 'translateY(40px)' },
