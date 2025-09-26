@@ -22,12 +22,30 @@
         @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
     </style>
+    <link rel="stylesheet" href="css/style.css">
     <script defer src="state.js"></script>
     <script defer src="voice.js"></script>
     <script defer src="join.js"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-900 min-h-screen">
+    <div id="app-nav"></div>
+    <script type="module">
+        import { mountPillNav } from './js/pill-nav.js';
+        import { mountAnimatedThemeToggler } from './js/theme-toggler.js';
+        mountPillNav({
+            items: [
+                { label: 'Home', href: 'index.html' },
+                { label: 'Artists', href: 'artists.html' },
+                { label: 'Join', href: 'join.html' },
+                { label: 'Profile', href: 'profile.html' }
+            ],
+            activeHref: 'join.html',
+            pillColor: '#ffffff',
+            pillTextColor: '#000000',
+            hoveredPillTextColor: '#ffffff'
+        });
+        mountAnimatedThemeToggler();
+    </script>
     <div class="max-w-6xl mx-auto px-4 py-8 min-h-screen flex flex-col items-center justify-center gap-8">
         <div class="w-full flex flex-col items-center gap-8">
             <!-- Left: Login/Join Card -->

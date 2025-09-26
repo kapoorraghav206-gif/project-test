@@ -7,9 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div id="app-nav"></div>
     <div id="progress-container">
         <div id="progress-bar"></div>
     </div>
@@ -177,6 +178,23 @@
         </div>
     </section>
 
+    <script type="module">
+        import { mountPillNav } from './js/pill-nav.js';
+        import { mountAnimatedThemeToggler } from './js/theme-toggler.js';
+        mountPillNav({
+            items: [
+                { label: 'Home', href: 'index.html' },
+                { label: 'About', href: '#about' },
+                { label: 'Services', href: '#services' },
+                { label: 'Contact', href: '#contact' }
+            ],
+            activeHref: 'index.html',
+            pillColor: '#ffffff',
+            pillTextColor: '#000000',
+            hoveredPillTextColor: '#ffffff'
+        });
+        mountAnimatedThemeToggler();
+    </script>
     <script type="module" src="script.js"></script>
 </body>
 </html>
